@@ -1,0 +1,29 @@
+int thirdMax(vector<int>& nums) {
+        int n = nums.size();
+        long f = LONG_MIN;
+        long s = LONG_MIN;
+        long t = LONG_MIN;
+        for(int i = 0; i < n; i++){
+            if(nums[i] == f || nums[i] == s || nums[i] == t){
+                continue;
+            }
+            if(f < nums[i]){
+                t = s;
+                s = f;
+                f = nums[i];
+            }
+  	     else if(nums[i] > s){
+                t = s;
+                s = nums[i];
+            }
+            else if(nums[i] > t){
+                t = nums[i];
+            }
+        }
+         if(t == LONG_MIN){
+            return f;
+        }
+        else{
+            return t;
+        }
+    }
