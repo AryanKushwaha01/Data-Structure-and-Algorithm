@@ -1,0 +1,24 @@
+void Solve(int start, int k, int n, vector<int>& c, vector<vector<int>>& ans){
+        
+        if(k == 0 && n == 0){
+            ans.push_back(c);
+        }
+        if(k == 0 || n <= 0) return;
+        for(int i = start; i <= 9; i++){
+            if(i > n){
+               break;
+            }
+            c.push_back(i);
+            Solve(i+1, k-1, n - i, c, ans);
+            c.pop_back();
+        }
+    }
+vector<vector<int>> combinationSum3(int k, int n) {
+        
+        vector<int> c;
+        vector<vector<int>> ans;
+
+        Solve(1,k,n,c,ans);
+
+        return ans;
+    }
