@@ -1,0 +1,24 @@
+int minMoves2(vector<int>& nums) {
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+        int m = 0;
+        if(n%2 != 0){
+            m = nums[n/2];
+        }
+        else{
+            int i = (n /2)-1;
+            m = nums[i];
+        }
+        int cnt = 0;
+	for(int i = 0; i < n; i++){
+            if(nums[i] > m){
+                int s = nums[i]-m;
+                cnt = cnt + s;
+            }
+            else{
+                int s = m - nums[i];
+                cnt = cnt + s;
+            }
+        }
+        return cnt;
+    }
