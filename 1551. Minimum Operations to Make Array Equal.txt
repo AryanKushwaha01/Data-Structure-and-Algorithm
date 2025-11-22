@@ -1,0 +1,22 @@
+int minOperations(int n) {
+        vector<int> arr(n);
+        for(int i = 0; i < n; i++){
+            arr[i] = (2*i)+1;
+        }
+        int left = 0;
+        int right = n -1;
+        int cnt = 0;
+        while(arr[left] != arr[right] && left < right){
+            while(arr[left] != arr[right]){
+                arr[left] = arr[left] + 1;
+                arr[right] = arr[right] - 1;
+                cnt++;
+            }
+	    if(arr[left] == arr[right]){
+                left++;
+                right--;
+            }
+        }
+
+        return cnt;
+    }
