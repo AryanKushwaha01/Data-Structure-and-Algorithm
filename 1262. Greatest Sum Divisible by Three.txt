@@ -1,0 +1,28 @@
+ int maxSumDivThree(vector<int>& nums) {
+        int n = nums.size();
+
+        int sum = 0;
+        int maxi = 0;
+        sort(nums.begin(), nums.end());
+        for(int i = 0; i < n; i++){
+            sum = sum + nums[i];
+        }
+	if(sum % 3 == 0) return sum;
+        for(int i = 0; i < n; i++){
+            int tem = sum - nums[i];
+            if(tem %3 == 0){
+                maxi = max(maxi, tem);
+            }
+        }
+	  for(int i = 0; i < n; i++){
+            for(int j = i+1; j < n; j++){
+                int tem = sum - nums[i] - nums[j];
+
+                if(tem%3 == 0){
+                    maxi = max(maxi, tem);
+                }
+            }
+        }
+
+        return maxi;
+    }

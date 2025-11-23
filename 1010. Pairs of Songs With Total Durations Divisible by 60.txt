@@ -1,0 +1,14 @@
+ int numPairsDivisibleBy60(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> freq(60, 0);
+        int cnt = 0;
+        for(int x : nums){
+            int r = (x%60);
+
+            int need = (60-r)%60;
+
+            cnt = cnt + freq[need];
+            freq[r]++;
+        }
+        return cnt;
+    }

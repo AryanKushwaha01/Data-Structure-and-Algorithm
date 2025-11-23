@@ -1,0 +1,13 @@
+ long long countCompleteDayPairs(vector<int>& nums) {
+        int n = nums.size();
+        long long cnt = 0;
+        vector<int> freq(24,0);
+        for(int x : nums){
+            int r = x%24;
+            int need = (24-r)%24;
+            cnt = cnt + freq[need];
+
+            freq[r]++;
+        }
+         return cnt; 
+    }
