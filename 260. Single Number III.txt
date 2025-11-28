@@ -1,0 +1,15 @@
+vector<int> singleNumber(vector<int>& nums) {
+        int n = nums.size();
+        unordered_map<int,int> m;
+        vector<int> ans;
+
+        for(int x : nums){
+            m[x]++;
+        }
+        for(int x : nums){
+            if(m[x] < 2){
+                ans.push_back(x);
+            }
+        }
+        return ans;
+    }
