@@ -1,0 +1,33 @@
+ ListNode* Solve(ListNode* head, int val){
+        ListNode* prev = nullptr;
+        ListNode* temp = head;
+
+        while(temp -> val != val && temp -> next != nullptr){
+            prev = temp;
+            temp = temp -> next;
+        }
+	if(prev != nullptr){
+            prev -> next = prev -> next -> next;
+        }
+        return head;
+    }
+
+ListNode* removeElements(ListNode* head, int val) {
+        if(head == nullptr){
+            return nullptr;
+        }
+        while(head != nullptr && head -> val == val){
+            ListNode* temp = head;
+            head = head -> next;
+            temp -> next = nullptr;
+            delete temp;
+        }
+	 ListNode* temp = head;
+        while(temp != nullptr){
+            if(temp -> val == val){
+                head = Solve(head, val);
+            }
+            temp = temp -> next;
+        }
+        return head;
+    }
