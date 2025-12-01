@@ -1,0 +1,33 @@
+int Size(ListNode* head){
+        if(head == nullptr){
+            return 0;
+        }
+        int cnt = 0;
+        ListNode* temp = head;
+        while(temp != nullptr){
+            temp = temp -> next;
+            cnt++;
+        }
+        return cnt;
+    }
+
+    ListNode* middleNode(ListNode* head) {
+        int size = Size(head);
+
+        int cnt = 0;
+        ListNode* temp = head;
+        if(size%2 != 0){
+            while(cnt < size/2 && temp != nullptr){
+                temp = temp -> next;
+                cnt++;
+            }
+        }
+
+	else{
+            while(cnt < ((size/2)) && temp != nullptr){
+                temp = temp -> next;
+                cnt++;
+            }
+        }
+        return temp;
+    }
