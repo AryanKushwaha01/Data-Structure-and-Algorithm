@@ -1,0 +1,15 @@
+int maxi = INT_MIN;
+    int helper(TreeNode* root){
+        if(root == NULL) return 0;
+
+        int left = helper(root -> left);
+        int right = helper(root -> right);
+
+        int ans = max(0,left) + max(0,right) + root -> val;
+        maxi = max(maxi, ans);
+        return root -> val + max(max(0,left), max(right,0));
+    }
+    int maxPathSum(TreeNode* root) {
+        helper(root);
+        return maxi;
+    }
