@@ -1,0 +1,14 @@
+int countCollisions(string s) {
+        int n = s.size();
+        int left = 0;
+        int right = n-1;
+        while(left >= 0 && s[left] == 'L') left++;
+        while(right >=0 && s[right] == 'R') right--;
+        int ans = 0;
+        for(int i = left; i <=right; i++){
+            if(s[i] == 'L' || s[i] == 'R'){
+                ans++;
+            }
+        }
+        return ans;
+    }
