@@ -1,0 +1,14 @@
+ vector<int> Solve(TreeNode* root,vector<int>& ans){
+        if(root == NULL) return {};
+        Solve(root -> left, ans);
+        ans.push_back(root -> val);
+        Solve(root -> right, ans);
+
+        return ans;
+    }
+ vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        Solve(root, ans);
+
+        return ans;
+    }
