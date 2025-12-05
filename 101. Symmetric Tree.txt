@@ -1,0 +1,14 @@
+bool Solve(TreeNode* rleft,TreeNode* rright){
+        if(rleft == NULL && rright != NULL || rleft != NULL && rright == NULL){
+            return 0;
+        }
+        if(rleft == NULL && rright == NULL) return 1;
+        if(rleft != NULL && rright != NULL && rleft -> val != rright -> val) return 0;
+        return Solve(rleft -> left, rright -> right)&&
+        Solve(rleft -> right, rright -> left);
+    }
+    bool isSymmetric(TreeNode* root) {
+        if(Solve(root -> left, root -> right)) return 1;
+
+        return 0;
+    }
