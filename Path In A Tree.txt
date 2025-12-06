@@ -1,0 +1,22 @@
+bool Solve(TreeNode<int> *root, vector<int>& arr, int x){
+	if(root == NULL) return false;
+
+	arr.push_back(root -> data);
+
+	if(root -> data == x) return true;
+
+	if((Solve(root -> left,arr,x)) || 
+	Solve(root -> right , arr,x)){
+		return true;
+	}
+
+	arr.pop_back();
+	return false;
+}
+vector<int> pathInATree(TreeNode<int> *root, int x)
+{
+    vector<int> ans;
+	Solve(root, ans, x);
+
+	return ans;
+}
