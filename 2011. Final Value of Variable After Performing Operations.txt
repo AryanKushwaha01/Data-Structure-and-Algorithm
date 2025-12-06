@@ -1,0 +1,14 @@
+int finalValueAfterOperations(vector<string>& s) {
+        int X = 0;
+        int n = s.size();
+
+        for(int i = 0; i < n; i++){
+            if(s[i] == "--X" || s[i] == "X--"){
+                X--;
+            }
+            else{
+                X++;
+            }
+        }
+        return X;
+    }
