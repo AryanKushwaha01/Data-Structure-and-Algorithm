@@ -1,0 +1,14 @@
+int countTriples(int n) {
+        int cnt = 0;
+        for(int c = 1; c <= n; c++){
+            for(int a = 1; a < c; a++){
+                long long value = c*c - a*a;
+                double root = sqrt(value);
+                int b = int(root) ;
+                if(b*b == value && a != b){
+                    cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
