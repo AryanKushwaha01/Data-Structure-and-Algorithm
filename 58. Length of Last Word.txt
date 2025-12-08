@@ -1,0 +1,14 @@
+int lengthOfLastWord(string s) {
+        int n = s.size();
+        int i = n - 1;
+        string ans = "";
+        while(i >=0 && s[i] == ' '){
+            i--;
+        }
+        while(i >=0 && s[i] != ' '){
+            ans.push_back(s[i]);
+            i--;
+        }
+
+        return ans.size();
+    }
