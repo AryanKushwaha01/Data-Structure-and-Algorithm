@@ -1,0 +1,21 @@
+int totalMoney(int n) {
+        long long sum = 0;
+        int k = 0;
+        int week = 0;
+        if(n < 7){
+            for(int i = 1; i <= n; i++){
+                sum = sum + i;
+            }
+        }
+	else if(n >= 7){
+                int w = n/7;
+                int e = n%7;
+                for(int i = 1; i <= w; i++){
+                    sum = sum + (28 + 7*(i-1));
+            }
+                for(int i = 1; i <= e; i++){
+                    sum = sum + (w+i);
+            }
+        }
+        return sum;
+    }
