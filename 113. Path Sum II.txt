@@ -1,0 +1,20 @@
+ void Solve(TreeNode* root, int target, vector<vector<int>>& ans, vector<int> path, int sum){
+        if(root == NULL) return;
+        path.push_back(root -> val);
+        sum = sum + root -> val;
+        if(root -> left == NULL && root -> right == NULL && sum == target){
+            ans.push_back({path});
+        }
+        Solve(root -> left, target, ans, path, sum);
+        Solve(root -> right, target, ans, path, sum);
+
+        // path.pop_back(); // Do not need to write this because path vector is not passed by reference 
+    }
+vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        vector<vector<int>> ans;
+        vector<int> path;
+        int sum = 0;
+        Solve(root,targetSum,ans, path, sum);
+
+        return ans;
+    }
