@@ -1,0 +1,16 @@
+bool Solve(TreeNode* root,int targetSum,int sum){
+        if(root == NULL) return false;
+        sum = sum + root -> val;
+        if(sum == targetSum && root -> left == NULL && root -> right == NULL){
+            return true;
+        }
+        if(Solve(root -> left,targetSum, sum) || Solve(root -> right, targetSum, sum)){
+            return true;
+        }
+        // sum = sum - root -> val;  //Do nt need to this beacuse sum is passed by value
+        return false;
+}
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        int sum = 0;
+        return Solve(root, targetSum, sum);
+    }
