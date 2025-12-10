@@ -1,0 +1,19 @@
+int maxScore(vector<int>& nums, int k) {
+        int n = nums.size();
+        long long lsum = 0;
+        long long rsum = 0;
+        long long sum = 0;
+
+        for(int i = 0; i < k; i++){
+            lsum = lsum + nums[i];
+        }
+        sum = max(sum, lsum+rsum);
+        int p = k-1;
+	for(int j = n-1; j > n-k-1; j--){
+            rsum = rsum + nums[j];
+            lsum = lsum - nums[p];
+            p--;
+            sum = max(sum, lsum+rsum);
+        }
+        return sum;
+    }
