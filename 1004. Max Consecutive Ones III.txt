@@ -1,0 +1,19 @@
+ int longestOnes(vector<int>& s, int k) {
+        int n = s.size();
+        int maxLen = 0;
+        int len = 0;
+        unordered_map<int, int> m;
+        int left = 0;
+
+        for(int right = 0; right < n; right++){
+            m[s[right]]++;
+	     while(m[0] > k){
+                m[s[left]]--;
+                left++;
+            }
+            if(m[0] <= k){
+                maxLen = max(maxLen, right - left + 1);
+            }
+        }
+        return maxLen;
+    }
