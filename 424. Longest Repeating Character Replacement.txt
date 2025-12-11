@@ -1,0 +1,22 @@
+int characterReplacement(string s, int k) {
+        int n = s.size();
+        int Max_freq = 0;
+        unordered_map<char, int> m;
+        int left = 0;
+        int ans = 0;
+        for(int i = 0; i < n; i++){
+            m[s[i]]++;
+	   Max_freq = max(Max_freq, m[s[i]]);
+            if((i-left + 1) - Max_freq <= k){
+                ans = max(ans, i-left + 1);
+            }
+            while((i-left + 1) - Max_freq > k){
+                m[s[left]]--;
+                if(m[s[left]] == 0){
+                    m.erase(s[left]);
+                }
+                left++;
+            }
+        }
+        return ans;
+    }
