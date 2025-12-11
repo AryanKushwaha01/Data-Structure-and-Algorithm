@@ -1,0 +1,23 @@
+int Solve(vector<int>& nums, int k){
+        if(k < 0) return 0;
+        int n = nums.size();
+        int sum = 0;
+        int left = 0;
+        int cnt = 0;
+
+        for(int i = 0; i < n; i++){
+            sum = sum + nums[i]%2;
+            while(sum > k){
+                sum = sum - nums[left]%2;
+                left++;
+            }
+	    cnt = cnt + (i - left +1);
+        }
+        return cnt;
+    }
+    int numberOfSubarrays(vector<int>& nums, int k) {
+        int ans = Solve(nums, k);
+        int ans2 = Solve(nums, k-1);
+
+        return ans - ans2;
+    }
