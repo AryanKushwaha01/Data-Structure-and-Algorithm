@@ -1,0 +1,52 @@
+int amountOfTime(TreeNode* root, int start) {
+        unordered_map<TreeNode*, TreeNode*> parent;
+        queue<TreeNode*> q;
+        q.push(root);
+        TreeNode* target = NULL;
+        while(!q.empty()){
+            TreeNode* curr = q.front();
+
+            q.pop();
+            if(curr -> val == start){
+                target = curr;
+            }
+	    if(curr -> left){
+                parent[curr -> left] = curr;
+                q.push(curr -> left);
+            }
+            if(curr -> right){
+                parent[curr -> right] = curr;
+                q.push(curr -> right);
+            }
+        }
+	unordered_set<TreeNode*> visited;
+        queue<TreeNode*> q1;
+        q1.push(target);
+        visited.insert(target);
+        int cnt = 0;
+        while(!q1.empty()){
+            int n = q1.size();
+
+            for(int i = 0; i < n; i++){
+                TreeNode* curr = q1.front();
+		q1.pop();
+                if(i == 0){
+                    cnt++;
+                }
+                if(curr -> left && !visited.count(curr -> left)){
+                    visited.insert(curr -> left);
+                    q1.push(curr -> left);
+                }
+		if(curr -> right && !visited.count(curr -> right)){
+                    visited.insert(curr -> right);
+                    q1.push(curr -> right);
+                }
+                if(parent.count(curr) && !visited.count(parent[curr])){
+                    visited.insert(parent[curr]);
+                    q1.push(parent[curr]);
+                }
+	     }
+        }
+
+        return cnt-1;
+    }
