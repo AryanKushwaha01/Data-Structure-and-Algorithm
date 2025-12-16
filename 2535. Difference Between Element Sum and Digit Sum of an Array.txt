@@ -1,0 +1,23 @@
+int differenceOfSum(vector<int>& nums) {
+        int E_sum = 0;
+        for(int i = 0; i < nums.size(); i++){
+            E_sum += nums[i];
+        }
+
+        int sum = 0;
+
+        for(int i = 0; i < nums.size(); i++){
+            if(nums[i] > 9){
+                int data = nums[i];
+                while(data > 0){
+		int digit = data%10;
+                    sum = sum + digit;
+                    data = data/10;
+                }
+            }
+            else{
+                sum = sum + nums[i];
+            }
+        }
+        return abs(E_sum - sum);
+    }
