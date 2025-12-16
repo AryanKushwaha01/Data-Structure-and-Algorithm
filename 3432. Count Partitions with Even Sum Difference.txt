@@ -1,0 +1,17 @@
+int countPartitions(vector<int>& nums) {
+        int n = nums.size();
+        int sum = 0;
+        int cnt = 0;
+        int sum1 = 0;
+        for(int i = 1; i < n; i++){
+            sum += nums[i];
+        }
+	for(int i = 0; i < n-1; i++){
+            sum1 = sum1 + nums[i];
+            if((sum1 - sum)%2 == 0){
+                cnt++;
+            }
+            sum = sum - nums[i+1];
+        }
+        return cnt;
+    }
