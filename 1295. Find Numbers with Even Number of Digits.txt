@@ -1,0 +1,35 @@
+int findNumbers(vector<int>& nums) {
+        int n = nums.size();
+
+        //First way to solve it
+
+        int ans = 0;
+        
+        for(int i = 0; i < n; i++){
+            if(nums[i] > 9){
+                int cnt = 0;
+                int num = nums[i];
+                while(num > 0){
+		    cnt++;
+                    num /=10;
+                }
+                if(cnt%2 == 0){
+                    ans++;
+                }
+            }
+        }
+        return ans;
+
+
+	//Second way to solve it
+
+        // int count = 0;
+
+        // for(int i = 0; i < n; i++){
+        //     int cnt = (to_string(nums[i])).size();
+        //     if(cnt%2 == 0){
+        //         count++;
+        //     }
+        // }
+        // return count;
+    }
