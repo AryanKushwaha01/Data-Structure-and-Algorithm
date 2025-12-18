@@ -1,0 +1,23 @@
+int totalNumbers(vector<int>& digits) {
+        int n = digits.size();
+        unordered_set<int> s;
+
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                for(int k = 0; k < n; k++){
+
+                    if(i != j && j != k && k != i){
+                        if(digits[i] == 0) continue;
+			long long number = (long long)digits[i] * 100 + 
+                                            (long long)digits[j] * 10 + 
+                                            (long long)digits[k];
+
+                        if(number%2 == 0){
+                            s.insert(number);
+                        }
+                    }
+                }
+            }
+        }
+        return s.size();
+    }
