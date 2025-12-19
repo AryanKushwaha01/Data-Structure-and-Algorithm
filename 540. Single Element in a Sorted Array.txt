@@ -1,0 +1,40 @@
+int singleNonDuplicate(vector<int>& nums) {
+
+        //First i Solved it as per leetcode requirement
+        int ans = 0;
+        if(nums.size() == 1) return nums[0];
+        for(int i = 0; i < nums.size(); i+=2){
+            if(i == 1){
+                if(nums[i-1] != nums[i]){
+                    ans = nums[i-1];
+                    return ans;
+                }
+            }
+	    else if(i == nums.size()-1){
+                if(nums[i-1] != nums[i]){
+                    ans = nums[i];
+                    return ans;
+                }
+            }
+            else if(nums[i] != nums[i+1]){
+                ans = nums[i];
+                return ans;
+            }
+        }
+        return ans;
+
+	//Second i Solved it using my own approach
+        
+        // int ans = 0;
+        // unordered_map<int, int> m;
+
+        // for(int val : nums){
+        //     m[val]++;
+        // }
+	// for(int val : nums){
+        //     if(m[val] == 1){
+        //         ans = val;
+        //     }
+        // }
+        // return ans;
+    }
