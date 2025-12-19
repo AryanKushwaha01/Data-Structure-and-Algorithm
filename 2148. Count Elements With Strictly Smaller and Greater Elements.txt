@@ -1,0 +1,14 @@
+int countElements(vector<int>& nums) {
+        int mini = INT_MAX;
+        int maxi = INT_MIN;
+        unordered_map<int, int> m;
+
+        for(int val : nums){
+            m[val]++;
+            mini = min(mini, val);
+            maxi = max(maxi, val);
+        }
+        if(mini == maxi) return 0;
+
+        return nums.size() - m[mini] - m[maxi];
+    }
