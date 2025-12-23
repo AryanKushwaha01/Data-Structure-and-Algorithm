@@ -1,0 +1,11 @@
+bool Solve(TreeNode* root, TreeNode* minval, TreeNode* maxval){
+        if(root == NULL) return 1;
+        if(minval && root -> val <= minval -> val) return 0;
+        if(maxval && root -> val >= maxval -> val) return 0;
+
+        return Solve(root -> left, minval, root)
+               && Solve(root -> right, root, maxval);
+    }
+    bool isValidBST(TreeNode* root) {
+        return Solve(root, NULL, NULL);
+    }
