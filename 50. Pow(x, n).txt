@@ -1,0 +1,16 @@
+double myPow(double x, int n) {
+        double ans = 1;
+        long curr = n;
+        if(n < 0){
+            x = 1/x;
+            curr = -curr;
+        }
+	while(curr > 0){
+            if(curr % 2 == 1){
+                ans = ans * x;
+            }
+            x = x*x;
+            curr = curr/2;
+        }
+        return ans;
+    }
