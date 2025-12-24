@@ -1,0 +1,19 @@
+int minimumBoxes(vector<int>& apple, vector<int>& capacity) {
+        sort(capacity.begin(), capacity.end());
+        int sum = 0;
+        int n = apple.size();
+        int n1 = capacity.size();
+        for(int i = 0; i < n; i++){
+            sum = sum + apple[i];
+        }
+        int cnt = 0;
+        int sum1 = 0;
+	for(int i = n1-1; i >=0; i--){
+            cnt++;
+            sum1 = sum1 + capacity[i];
+            if(sum1 >= sum){
+                return cnt;
+            }
+        }
+        return -1;
+    }
