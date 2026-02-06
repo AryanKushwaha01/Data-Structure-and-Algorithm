@@ -1,0 +1,34 @@
+int rec(int i, int j, string& word1, string& word2, vector<vector<int>>& dp){
+        //Base case
+        //Lets say i have reached the last index of word1
+
+        if(i == word1.size()){
+            //Same here
+            return word2.length() - j;
+        }
+        if(j == word2.length()){
+            //Here is like i have reached at the last index of j,
+            // And j's length is 5 and till now in string1 i ahve reached only 
+            // index 3 then there is no need of left elements so we have to retuen this 
+            return word1.length()- i;
+        }
+	if(dp[i][j] != -1) return dp[i][j];
+        int ans = 0;
+        //inserting
+        ans = 1 + rec(i, j+1, word1, word2, dp);
+        //deleting
+        ans = min(ans, 1+rec(i+1, j, word1, word2, dp));
+        //Replace
+        ans = min(ans, 1 + rec(i+1, j+1, word1, word2, dp));
+        if(word1[i] == word2[j]){
+            ans = min(ans, rec(i+1, j+1, word1, word2, dp));
+        }
+        dp[i][j] = ans;
+        return ans;
+    }
+    int minDistance(string word1, string word2) {
+        int n = word1.size();
+        int n1 = word2.size();
+        vector<vector<int>> dp(n+1, vector<int>(n1+1, -1));
+        return rec(0, 0, word1, word2, dp);
+    }
