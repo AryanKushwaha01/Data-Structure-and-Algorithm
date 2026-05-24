@@ -1,0 +1,35 @@
+class Solution {
+public:
+
+    vector<string> keypad = {
+            "", "", "abc", "def", 
+            "ghi", "jkl", "mno",
+            "pqrs", "tuv", "wxyz"
+    };
+
+
+   vector<string> letterCombinations(string digits) {
+        if(digits.size() == 0){
+            vector<string> ans;
+            ans.push_back("");
+            return ans;
+        }
+
+
+	char ch = digits[0];
+        string ros = digits.substr(1);
+
+        vector<string> preresul = letterCombinations(ros);
+        vector<string> ans; 
+        
+        string str = keypad[ch - '0'];
+
+	for(int i = 0; i < str.length(); i++){
+            char ch = str[i];
+            for(string re : preresul){
+                ans.push_back(ch + re);
+            }
+        }
+        return ans;
+    }
+};
