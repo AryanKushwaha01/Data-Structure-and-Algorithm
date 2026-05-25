@@ -1,0 +1,45 @@
+class Solution {
+public:
+
+    vector<string> getStair(int n){
+        if(n == 0){
+            vector<string> path;
+            path.push_back("");
+            return path;
+        }else if(n < 0){
+            vector<string> path;
+            return path;
+        }
+	
+	vector<string> paths1 = getStair(n-1);
+        vector<string> paths2 = getStair(n-2);
+
+        vector<string> paths;
+
+        for(string path : paths1){
+            paths.push_back("1" + path);
+        }
+        for(string path : paths2){
+            paths.push_back("2" + path);
+        }
+
+	 return paths;
+    }
+    int climbStairs(int n) {
+        // if(n == 1 || n == 2){
+        //     return n;
+        // }
+        // int prev1 = 2;
+        // int prev2 = 1;
+        // int curr = 0;
+        // for(int i = 3; i <= n; i++){
+	//     curr = prev1 + prev2;
+        //     prev2 = prev1;
+        //     prev1 = curr;
+        // }
+        // return curr;
+
+        vector<string> paths = getStair(n);
+        return paths.size();
+    }
+};
