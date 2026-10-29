@@ -1,0 +1,28 @@
+ vector<int> findAnagrams(string s, string p) {
+        int left = 0, right = 0;
+        unordered_map<char, int> f1, f2;
+        int k = p.size();
+        int n = s.size();
+
+        for(int i = 0; i < k; i++){
+            f1[p[i]]++;
+        }
+        vector<int> ans;
+        while(right < n){
+            f2[s[right]]++;
+
+            while(right - left + 1 > k){
+                f2[s[left]]--;
+                if(f2[s[left]] == 0){
+                    f2.erase(s[left]);
+                }
+                left++;
+            }
+            if(f1 == f2){
+                ans.push_back(left);
+            }
+            right++;
+        }
+        return ans;
+    }
+};
