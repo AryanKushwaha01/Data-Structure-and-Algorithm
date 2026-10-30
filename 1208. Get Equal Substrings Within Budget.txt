@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int equalSubstring(string s, string t, int maxCost) {
+        int n = s.size();
+        int left = 0, right = 0;
+        int Sum = 0;
+        int Maxi = 0;
+        while(right < n){
+            Sum += abs(s[right]-t[right]);
+
+            while(maxCost < Sum){
+                Sum -= abs(s[left]-t[left]);
+                left++;
+            }
+            Maxi = max(Maxi, right - left + 1);
+            right++;
+        }
+        return Maxi;
+    }
+};
